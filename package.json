@@ -1,0 +1,27 @@
+{
+  "name": "rescue-eth",
+  "version": "1.0.0",
+  "description": "rescuing eth",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploySimpleContract": "npx hardhat scripts/deploySimpleContract.ts --network sepolia",
+    "pending": "ts-node chemy/pending.ts",
+    "sendtoeth": "ts-node chemy/sendtoeth.ts",
+    "sendPublic": "ts-node chemy/sendPublic.ts",
+    "sendPrivate": "ts-node chemy/sendPrivate.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "hardhat": "^2.22.6"
+  },
+  "dependencies": {
+    "@types/node": "^20.14.10",
+    "alchemy-sdk": "^3.3.1",
+    "dotenv": "^16.4.5",
+    "ethers": "^6.13.1",
+    "ts-node": "^10.9.2"
+  }
+}
