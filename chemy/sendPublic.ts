@@ -13,7 +13,7 @@ const recipientAddress = '0xCf2E95Ab5BCC1E2aC5f9f10340cA6fdd466E7A5F';
 
 const settings = {
     apiKey: API_KEY,
-    network: Network.ETH_SEPOLIA,
+    network: Network.ETH_MAINNET,
 };
 const alchemy = new Alchemy(settings);
 const wallet = new Wallet(PRIVATE_KEY, alchemy);
@@ -28,7 +28,11 @@ async function sendPublic() {
         console.error("Error fetching fee data");
         return;
     }
-    
+    const pending = await alchemy.core.getTransactionCount(wallet.address, 'pending')
+
+    console.log(pending)
+
+    await alchemy.config.getProvider().then(console.log);
     const chainid = await wallet.getChainId();
 
     const etherBalance = await alchemy.core.getBalance(recipientAddress)
@@ -38,14 +42,14 @@ async function sendPublic() {
 
     const transaction = {
         to: recipientAddress,
-        value: Utils.parseEther("0.0007"),
+        value: Utils.parseEther("30"),
         gasLimit: Utils.parseUnits("21000", "wei"),
 
-        // maxPriorityFeePerGas: feeData.maxPriorityFeePerGas,
-        // maxFeePerGas: feeData.maxFeePerGas, 
+        maxPriorityFeePerGas: feeData.maxPriorityFeePerGas,
+        maxFeePerGas: feeData.maxFeePerGas, 
         // maxFeePerGas: Utils.parseUnits("6", "gwei"),
-        maxFeePerGas: Utils.parseUnits("1.5", "gwei"),
-        maxPriorityFeePerGas: Utils.parseUnits("1", "gwei"),
+        // maxFeePerGas: Utils.parseUnits("5000", "gwei"),
+        // maxPriorityFeePerGas: Utils.parseUnits("5000", "gwei"),
 
         nonce: await alchemy.core.getTransactionCount(wallet.getAddress()),
         // nonce: 13,

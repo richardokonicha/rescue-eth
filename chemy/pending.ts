@@ -1,4 +1,4 @@
-import { Alchemy, Network } from 'alchemy-sdk';
+import { Alchemy, Network, Utils } from 'alchemy-sdk';
 
 const { ALCHEMY_API_KEY, PRIVATE_KEY } = process.env;
 
@@ -17,12 +17,19 @@ const settings = {
 // Creating an Alchemy instance
 const alchemy = new Alchemy(settings);
 
-// Function to handle pending transactions
-const handlePendingTransaction = (tx: any) => {
-  console.log('Pending transaction:', tx);
-};
+ alchemy.core.getBalance("0xcf2e95ab5bcc1e2ac5f9f10340ca6fdd466e7a5f").then((balance) => {
+  console.log('Balance:', Number(balance) * 3276.83);
+  console.log('Ether balance $:', Number(Utils.formatEther(balance)) * 3276.83) ;
+  console.log("Balance (gwei):", Number(Utils.formatUnits(balance, "gwei")) * 3276.83 );
+ });
 
-// Subscribe to pending transactions
-alchemy.ws.on('pendingTransactions', handlePendingTransaction);
+// // Function to handle pending transactions
+// const handlePendingTransaction = (tx: any) => {
+//   console.log('Pending transaction:', tx);
+// };
 
-console.log('Listening for pending transactions...');
+// // Subscribe to pending transactions
+// alchemy.ws.on('pendingTransactions', handlePendingTransaction);
+
+// console.log('Listening for pending transactions...');
+
