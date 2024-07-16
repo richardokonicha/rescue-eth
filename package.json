@@ -9,12 +9,15 @@
     "pending": "ts-node chemy/pending.ts",
     "sendtoeth": "ts-node chemy/sendtoeth.ts",
     "sendPublic": "ts-node chemy/sendPublic.ts",
-    "sendPrivate": "ts-node chemy/sendPrivate.ts"
+    "sendPrivate": "ts-node chemy/sendPrivate.ts",
+    "listenPublic": "ts-node chemy/listenPublic.ts",
+    "pendingTransaction": "ts-node chemy/pendingTransaction.ts"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@types/ws": "^8.5.11",
     "hardhat": "^2.22.6"
   },
   "dependencies": {
