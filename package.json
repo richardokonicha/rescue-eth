@@ -16,15 +16,16 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@nomicfoundation/hardhat-toolbox": "^7.0.0",
     "@types/ws": "^8.5.11",
-    "hardhat": "^2.22.6"
+    "hardhat": "^3.20.0"
   },
   "dependencies": {
     "@types/node": "^20.14.10",
     "alchemy-sdk": "^3.3.1",
     "dotenv": "^16.4.5",
     "ethers": "^6.13.1",
+    "node-fetch": "^3.3.2",
     "ts-node": "^10.9.2"
   }
 }
